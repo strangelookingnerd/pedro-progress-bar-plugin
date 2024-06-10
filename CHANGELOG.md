@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# pedro-progress-bar-plugin Changelog
+# pedro-progress-bar Changelog
 
 ## [Unreleased]
 ### Added
