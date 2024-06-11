@@ -1,7 +1,8 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
-
-# pedro-progress-bar Changelog
+# Pedro Progress Bar Changelog
 
 ## [Unreleased]
 ### Added
+- Implemented first version of Pedro Progress Bar
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+

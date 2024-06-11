@@ -53,6 +53,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
+/**
+ * The actual progress bar implementation. Heavily inspired by {@link com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI}
+ */
 public class PedroProgressBarUI extends BasicProgressBarUI {
 
     private static final Color TRACK_COLOR = JBColor.namedColor("ProgressBar.trackColor",

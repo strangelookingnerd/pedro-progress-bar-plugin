@@ -3,6 +3,7 @@
     <id>com.github.strangelookingnerd:pedro-progress-bar</id>
     <name>Pedro Progress Bar</name>
     <vendor>strangelookingnerd</vendor>
+    <category>User Interface</category>
 
     <depends>com.intellij.modules.platform</depends>
 

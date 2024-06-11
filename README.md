@@ -1,34 +1,24 @@
-# pedro-progress-bar-plugin
+# Pedro Progress Bar IntelliJ Plugin
 
-![Build](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/workflows/Build/badge.svg)
+[![Build](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/workflows/Build/badge.svg)](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/actions/workflows/build.yml)
 [![Version](https://img.shields.io/jetbrains/plugin/v/com.github.strangelookingnerd:pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/com.github.strangelookingnerd:pedro-progress-bar)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.strangelookingnerd:pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/com.github.strangelookingnerd:pedro-progress-bar)
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Get familiar with the [template documentation][template].
-- [x] Adjust the [pluginGroup](./gradle.properties), [plugin ID](./src/main/resources/META-INF/plugin.xml) and [sources package](./src/main/kotlin).
-- [ ] Adjust the plugin description in `README` (see [Tips][docs:plugin-description])
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html?from=IJPluginTemplate).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [x] Set the `PLUGIN_ID` in the above README badges.
-- [ ] Set the [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate) related [secrets](https://github.com/JetBrains/intellij-platform-plugin-template#environment-variables).
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html?from=IJPluginTemplate).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
-
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+This plugin provides a custom progress bar featuring an animated pixel art version of the <a href="https://youtu.be/F2YpXC1itEE">Pedro Pedro Pedro - Racoon Meme</a>.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+<img src="https://images.imgbox.com/e7/69/CKfukTcc_o.gif" alt="Pedro Pedro Pedro" width="64" />
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
+The artwork originates from a <a href="https://www.reddit.com/r/PixelArt/comments/1ci6rxh/pedro_racoon">reddit post</a> by <a href="https://www.reddit.com/user/Hobbes2594">/u/Hobbes2594</a>.
+
+The progress bar itself is heavily inspired from the `DarculaProgressBarUI` implementation by IntelliJ.
 <!-- Plugin description end -->
 
 ## Installation
 
 - Using the IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "pedro-progress-bar-plugin"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Pedro Progress Bar"</kbd> >
   <kbd>Install</kbd>
   
 - Manually:
