@@ -6,11 +6,11 @@ fun environment(key: String) = providers.environmentVariable(key)
 
 plugins {
     id("java") // Java support
-    alias(libs.plugins.kotlin) // Kotlin support
-    alias(libs.plugins.gradleIntelliJPlugin) // Gradle IntelliJ Plugin
-    alias(libs.plugins.changelog) // Gradle Changelog Plugin
-    alias(libs.plugins.qodana) // Gradle Qodana Plugin
-    alias(libs.plugins.kover) // Gradle Kover Plugin
+    id("org.jetbrains.kotlin.jvm").version("2.0.0") // Kotlin support
+    id("org.jetbrains.intellij").version("1.17.3") // Gradle IntelliJ Plugin
+    id("org.jetbrains.changelog").version("2.2.0") // Gradle Changelog Plugin
+    id("org.jetbrains.qodana").version("2024.1.5") // Gradle Qodana Plugin
+    id("org.jetbrains.kotlinx.kover").version("0.8.1") // Gradle Kover Plugin
 }
 
 group = properties("pluginGroup").get()
@@ -23,7 +23,7 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-//    implementation(libs.exampleLibrary)
+// none
 }
 
 // Set the JVM language level used to build the project.

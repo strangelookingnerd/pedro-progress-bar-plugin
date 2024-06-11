@@ -26,22 +26,32 @@ package com.github.strangelookingnerd;
 
 import com.intellij.ui.scale.JBUIScale;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
 
 public final class PedroIcons {
 
     private static final ImageIcon EMPTY = new ImageIcon(/* used if we can't scale the image */);
-    private static final ImageIcon PIXEL_ART_PEDRO_16 = new ImageIcon(PedroIcons.class.getResource("/pedro_16.gif"), "Pedro 16x16");
-    private static final ImageIcon PIXEL_ART_PEDRO_17 = new ImageIcon(PedroIcons.class.getResource("/pedro_17.gif"), "Pedro 17x17");
-    private static final ImageIcon PIXEL_ART_PEDRO_20 = new ImageIcon(PedroIcons.class.getResource("/pedro_20.gif"), "Pedro 20x20");
-    private static final ImageIcon PIXEL_ART_PEDRO_24 = new ImageIcon(PedroIcons.class.getResource("/pedro_24.gif"), "Pedro 24x24");
-    private static final ImageIcon PIXEL_ART_PEDRO_28 = new ImageIcon(PedroIcons.class.getResource("/pedro_28.gif"), "Pedro 28x28");
-    private static final ImageIcon PIXEL_ART_PEDRO_32 = new ImageIcon(PedroIcons.class.getResource("/pedro_32.gif"), "Pedro 32x32");
+    private static final ImageIcon PIXEL_ART_PEDRO_16 = new ImageIcon(PedroIcons.class.getResource("/pedro_16.gif"),
+            "Pedro 16x16");
+    private static final ImageIcon PIXEL_ART_PEDRO_17 = new ImageIcon(PedroIcons.class.getResource("/pedro_17.gif"),
+            "Pedro 17x17");
+    private static final ImageIcon PIXEL_ART_PEDRO_20 = new ImageIcon(PedroIcons.class.getResource("/pedro_20.gif"),
+            "Pedro 20x20");
+    private static final ImageIcon PIXEL_ART_PEDRO_24 = new ImageIcon(PedroIcons.class.getResource("/pedro_24.gif"),
+            "Pedro 24x24");
+    private static final ImageIcon PIXEL_ART_PEDRO_28 = new ImageIcon(PedroIcons.class.getResource("/pedro_28.gif"),
+            "Pedro 28x28");
+    private static final ImageIcon PIXEL_ART_PEDRO_32 = new ImageIcon(PedroIcons.class.getResource("/pedro_32.gif"),
+            "Pedro 32x32");
 
     private PedroIcons() {
         // hidden
     }
 
+    /**
+     * Scales the image icon based on the available zoom factors.
+     * @return the scaled image icon
+     */
     public static ImageIcon getScaledIcon() {
         return switch (JBUIScale.scale(100)) {
             case 100 -> PIXEL_ART_PEDRO_16;

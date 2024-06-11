@@ -32,27 +32,50 @@ import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.UIUtilities;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicProgressBarUI;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
 public class PedroProgressBarUI extends BasicProgressBarUI {
 
-    private static final Color TRACK_COLOR = JBColor.namedColor("ProgressBar.trackColor", new JBColor(Gray.xC4, Gray.x55));
-    private static final Color PROGRESS_COLOR = JBColor.namedColor("ProgressBar.progressColor", new JBColor(Gray.x80, Gray.xA0));
-    private static final Color INDETERMINATE_START_COLOR = JBColor.namedColor("ProgressBar.indeterminateStartColor", new JBColor(Gray.xC4, Gray.x69));
-    private static final Color INDETERMINATE_END_COLOR = JBColor.namedColor("ProgressBar.indeterminateEndColor", new JBColor(Gray.x80, Gray.x83));
+    private static final Color TRACK_COLOR = JBColor.namedColor("ProgressBar.trackColor",
+            new JBColor(Gray.xC4, Gray.x55));
+    private static final Color PROGRESS_COLOR = JBColor.namedColor("ProgressBar.progressColor",
+            new JBColor(Gray.x80, Gray.xA0));
+    private static final Color INDETERMINATE_START_COLOR = JBColor.namedColor("ProgressBar.indeterminateStartColor",
+            new JBColor(Gray.xC4, Gray.x69));
+    private static final Color INDETERMINATE_END_COLOR = JBColor.namedColor("ProgressBar.indeterminateEndColor",
+            new JBColor(Gray.x80, Gray.x83));
 
-    private static final Color FAILED_COLOR = JBColor.namedColor("ProgressBar.failedColor", new JBColor(0xd64f4f, 0xe74848));
-    private static final Color FAILED_END_COLOR = JBColor.namedColor("ProgressBar.failedEndColor", new JBColor(0xfb8f89, 0xf4a2a0));
-    private static final Color PASSED_COLOR = JBColor.namedColor("ProgressBar.passedColor", new JBColor(0x34b171, 0x008f50));
-    private static final Color PASSED_END_COLOR = JBColor.namedColor("ProgressBar.passedEndColor", new JBColor(0x7ee8a5, 0x5dc48f));
-    private static final Color WARNING_COLOR = JBColor.namedColor("ProgressBar.warningColor", new JBColor(0xF0A732, 0xD9A343));
-    private static final Color WARNING_END_COLOR = JBColor.namedColor("ProgressBar.warningEndColor", new JBColor(0xEAD2A1, 0xEAD2A1));
+    private static final Color FAILED_COLOR = JBColor.namedColor("ProgressBar.failedColor",
+            new JBColor(0xd64f4f, 0xe74848));
+    private static final Color FAILED_END_COLOR = JBColor.namedColor("ProgressBar.failedEndColor",
+            new JBColor(0xfb8f89, 0xf4a2a0));
+    private static final Color PASSED_COLOR = JBColor.namedColor("ProgressBar.passedColor",
+            new JBColor(0x34b171, 0x008f50));
+    private static final Color PASSED_END_COLOR = JBColor.namedColor("ProgressBar.passedEndColor",
+            new JBColor(0x7ee8a5, 0x5dc48f));
+    private static final Color WARNING_COLOR = JBColor.namedColor("ProgressBar.warningColor",
+            new JBColor(0xF0A732, 0xD9A343));
+    private static final Color WARNING_END_COLOR = JBColor.namedColor("ProgressBar.warningEndColor",
+            new JBColor(0xEAD2A1, 0xEAD2A1));
 
     private static final int CYCLE_TIME_DEFAULT = 800;
     private static final int REPAINT_INTERVAL_DEFAULT = 50;
@@ -117,7 +140,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
                 shape = getShapedRect(r.x, yOffset, r.width, pHeight, pHeight);
                 graphics2D.setPaint(new GradientPaint(r.x + getAnimationIndex() * step * 2F, yOffset, startColor,
                         r.x + getFrameCount() * step + getAnimationIndex() * step * 2F, yOffset, endColor, true));
-            } else { // VERTICAL
+            } else {
                 int pWidth = getStripeWidth();
                 int xOffset = r.x + (r.width - pWidth) / 2;
 
@@ -130,7 +153,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             ImageIcon icon = PedroIcons.getScaledIcon();
             if (orientation == SwingConstants.HORIZONTAL) {
                 icon.paintIcon(progressBar, graphics2D, r.x + getAnimationIndex() * step * 2, r.y);
-            } else { // VERTICAL
+            } else {
                 icon.paintIcon(progressBar, graphics2D, r.x, r.y + getAnimationIndex() * step * 2);
             }
 
@@ -138,7 +161,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             if (progressBar.isStringPainted()) {
                 if (progressBar.getOrientation() == SwingConstants.HORIZONTAL) {
                     paintString((Graphics2D) graphics, i.left, i.top, r.width, r.height, boxRect.x, boxRect.width);
-                } else { // VERTICAL
+                } else {
                     paintString((Graphics2D) graphics, i.left, i.top, r.width, r.height, boxRect.y, boxRect.height);
                 }
             }
@@ -173,7 +196,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
 
                 fullShape = getShapedRect(r.x, yOffset, r.width, pHeight, pHeight);
                 coloredShape = getShapedRect(r.x, yOffset, amountFull, pHeight, pHeight);
-            } else { // VERTICAL
+            } else {
                 int pWidth = getStripeWidth();
                 int xOffset = r.x + (r.width - pWidth) / 2;
 
@@ -200,7 +223,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             ImageIcon icon = PedroIcons.getScaledIcon();
             if (orientation == SwingConstants.HORIZONTAL) {
                 icon.paintIcon(progressBar, graphics2D, amountFull, r.y);
-            } else { // VERTICAL
+            } else {
                 icon.paintIcon(progressBar, graphics2D, r.x, amountFull);
             }
 
@@ -234,7 +257,8 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
     }
 
     private Shape getShapedRect(float x, float y, float w, float h, float ar) {
-        boolean flatEnds = UIUtil.isUnderWin10LookAndFeel() || progressBar.getClientProperty("ProgressBar.flatEnds") == Boolean.TRUE;
+        boolean flatEnds = UIUtil.isUnderWin10LookAndFeel() || progressBar.getClientProperty(
+                "ProgressBar.flatEnds") == Boolean.TRUE;
         return flatEnds ? new Rectangle2D.Float(x, y, w, h) : new RoundRectangle2D.Float(x, y, w, h, ar, ar);
     }
 
@@ -264,7 +288,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             graphics2D.setColor(getSelectionForeground());
             graphics2D.clipRect(fillStart, y, amountFull, h);
             UIUtilities.drawString(progressBar, graphics2D, progressString, renderLocation.x, renderLocation.y);
-        } else { // VERTICAL
+        } else {
             graphics2D.setColor(getSelectionBackground());
             AffineTransform rotate = AffineTransform.getRotateInstance(Math.PI / 2);
             graphics2D.setFont(progressBar.getFont().deriveFont(rotate));

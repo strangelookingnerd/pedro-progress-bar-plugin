@@ -30,7 +30,7 @@ import com.intellij.openapi.application.ApplicationActivationListener;
 import com.intellij.openapi.wm.IdeFrame;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
+import javax.swing.UIManager;
 
 public class PedroProgressBarListener implements LafManagerListener, ApplicationActivationListener {
 
