@@ -1,8 +1,8 @@
 # Pedro Progress Bar IntelliJ Plugin
 
 [![Build](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/workflows/Build/badge.svg)](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/actions/workflows/build.yml)
-[![Version](https://img.shields.io/jetbrains/plugin/v/com.github.strangelookingnerd:pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/com.github.strangelookingnerd:pedro-progress-bar)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.strangelookingnerd:pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/com.github.strangelookingnerd:pedro-progress-bar)
+[![Version](https://img.shields.io/jetbrains/plugin/v/com.github.strangelookingnerd.pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/com.github.strangelookingnerd.pedro-progress-bar)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/com.github.strangelookingnerd.pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/com.github.strangelookingnerd.pedro-progress-bar)
 
 <!-- Plugin description -->
 This plugin provides a custom progress bar featuring an animated pixel art version of the <a href="https://youtu.be/F2YpXC1itEE">Pedro Pedro Pedro - Racoon Meme</a>.
