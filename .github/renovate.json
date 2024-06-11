@@ -6,7 +6,7 @@
     ":semanticCommitsDisabled"
   ],
   "schedule": [
-    "weekly"
+    "daily"
   ],
   "reviewers": [
     "strangelookingnerd"
