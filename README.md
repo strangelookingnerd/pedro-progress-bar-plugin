@@ -3,7 +3,7 @@
 [![Build](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/workflows/Build/badge.svg)](https://github.com/strangelookingnerd/pedro-progress-bar-plugin/actions/workflows/build.yml)
 [![Version](https://img.shields.io/jetbrains/plugin/v/24613-pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/24613-pedro-progress-bar)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/24613-pedro-progress-bar.svg)](https://plugins.jetbrains.com/plugin/24613-pedro-progress-bar)
-  
+
 <img src="src/main/resources/pedro_128.gif" alt="Pedro Pedro Pedro" width="64" />
 
 <!-- Plugin description -->
