@@ -7,7 +7,7 @@ fun environment(key: String) = providers.environmentVariable(key)
 plugins {
     id("java") // Java support
     id("org.jetbrains.kotlin.jvm") version "2.0.0" // Kotlin support
-    id("org.jetbrains.intellij") version "1.17.3" // Gradle IntelliJ Plugin
+    id("org.jetbrains.intellij") version "1.17.4" // Gradle IntelliJ Plugin
     id("org.jetbrains.changelog") version "2.2.0" // Gradle Changelog Plugin
     id("org.jetbrains.qodana") version "2024.1.5" // Gradle Qodana Plugin
     id("org.jetbrains.kotlinx.kover") version "0.8.1" // Gradle Kover Plugin
