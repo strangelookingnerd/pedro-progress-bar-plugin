@@ -137,6 +137,7 @@ jobs:
       - name: Upload Code Coverage Report
         uses: codecov/codecov-action@v4
         with:
+          token: ${{secrets.CODECOV_TOKEN}}
           files: ${{ github.workspace }}/build/reports/kover/report.xml
 
   # Run Qodana inspections and provide report
@@ -173,6 +174,12 @@ jobs:
         uses: JetBrains/qodana-action@v2024.1.5
         with:
           cache-default-branch-only: true
+
+      # Upload results to CodeQL
+      - name: CodeQL - Upload SARIF
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
 
   # Run plugin structure verification along with IntelliJ Plugin Verifier
   verify:

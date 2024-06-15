@@ -2,6 +2,9 @@
 # Pedro Progress Bar Changelog
 
 ## [Unreleased]
+- Various dependency updates
+
+## [0.0.2]
 ### Added
 - Prepare next plugin version
 
