@@ -1,0 +1,20 @@
+[versions]
+# libraries
+junit5 = "5.10.2"
+
+# plugins
+kotlin = "2.0.0"
+changelog = "2.2.0"
+gradleIntelliJPlugin = "1.17.4"
+qodana = "2024.1.5"
+kover = "0.8.1"
+
+[libraries]
+junit5 = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit5" }
+
+[plugins]
+changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
+gradleIntelliJPlugin = { id = "org.jetbrains.intellij", version.ref = "gradleIntelliJPlugin" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+qodana = { id = "org.jetbrains.qodana", version.ref = "qodana" }
