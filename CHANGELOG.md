@@ -2,6 +2,9 @@
 # Pedro Progress Bar Changelog
 
 ## [Unreleased]
+### Added
+- Do not use deprecated `UIUtil.isUnderWin10LookAndFeel()`
+- Plugin description cleanup
 - Various dependency updates
 
 ## [0.0.2]

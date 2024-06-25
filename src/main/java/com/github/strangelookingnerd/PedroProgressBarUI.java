@@ -29,7 +29,6 @@ import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.UIUtilities;
 
 import javax.swing.ImageIcon;
@@ -260,9 +259,9 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
     }
 
     private Shape getShapedRect(float x, float y, float w, float h, float ar) {
-        boolean flatEnds = UIUtil.isUnderWin10LookAndFeel() || progressBar.getClientProperty(
-                "ProgressBar.flatEnds") == Boolean.TRUE;
-        return flatEnds ? new Rectangle2D.Float(x, y, w, h) : new RoundRectangle2D.Float(x, y, w, h, ar, ar);
+        return progressBar.getClientProperty("ProgressBar.flatEnds") == Boolean.TRUE
+                ? new Rectangle2D.Float(x, y, w, h)
+                : new RoundRectangle2D.Float(x, y, w, h, ar, ar);
     }
 
     private int getStripeWidth() {

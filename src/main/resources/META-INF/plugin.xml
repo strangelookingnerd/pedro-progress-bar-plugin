@@ -1,8 +1,8 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
+<idea-plugin url="https://github.com/strangelookingnerd/pedro-progress-bar-plugin">
     <id>com.github.strangelookingnerd.pedro-progress-bar</id>
     <name>Pedro Progress Bar</name>
-    <vendor>strangelookingnerd</vendor>
+    <vendor url="https://strangelookingnerd.github.io/">strangelookingnerd</vendor>
     <category>User Interface</category>
 
     <depends>com.intellij.modules.platform</depends>
