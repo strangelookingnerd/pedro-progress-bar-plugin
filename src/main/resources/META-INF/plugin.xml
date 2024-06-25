@@ -2,7 +2,7 @@
 <idea-plugin url="https://github.com/strangelookingnerd/pedro-progress-bar-plugin">
     <id>com.github.strangelookingnerd.pedro-progress-bar</id>
     <name>Pedro Progress Bar</name>
-    <vendor url="https://strangelookingnerd.github.io/">strangelookingnerd</vendor>
+    <vendor url="https://strangelookingnerd.github.io">strangelookingnerd</vendor>
     <category>User Interface</category>
 
     <depends>com.intellij.modules.platform</depends>
