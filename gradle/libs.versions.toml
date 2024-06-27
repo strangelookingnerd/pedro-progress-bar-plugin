@@ -1,6 +1,6 @@
 [versions]
 # libraries
-junit5 = "5.10.2"
+junit5 = "5.10.3"
 
 # plugins
 kotlin = "2.0.0"
