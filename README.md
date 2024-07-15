@@ -20,7 +20,7 @@ The progress bar itself is heavily inspired from the `DarculaProgressBarUI` impl
 
 - Using the IDE built-in plugin system:
 
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "%NAME%"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Pedro Progress Bar"</kbd> >
   <kbd>Install</kbd>
 
 - Using JetBrains Marketplace:
