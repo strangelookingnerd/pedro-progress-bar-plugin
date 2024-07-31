@@ -28,15 +28,15 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.plaf.ComponentUI;
 
-import static com.intellij.testFramework.UsefulTestCase.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class PedroProgressBarUITest {
 
     @Test
     void testCreateUI() {
         ComponentUI ui = PedroProgressBarUI.createUI(null);
-        assertInstanceOf(ui, PedroProgressBarUI.class);
+        assertInstanceOf(PedroProgressBarUI.class, ui);
     }
 
     @Test

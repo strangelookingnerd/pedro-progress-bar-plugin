@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Migrate to IntelliJ Platform Gradle Plugin 2.0
+- Various dependency updates
+
 ## [0.0.3] - 2024-06-26
 
 ### Added
