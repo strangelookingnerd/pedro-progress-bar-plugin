@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.4] - 2024-07-31
+
 ### Added
 
 - Migrate to IntelliJ Platform Gradle Plugin 2.0
@@ -30,7 +32,8 @@
 - Implemented first version of Pedro Progress Bar
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/commits/v0.0.1
