@@ -29,6 +29,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.ui.BalloonLayout;
+import kotlin.coroutines.CoroutineContext;
+import kotlin.jvm.functions.Function2;
+import kotlinx.coroutines.CoroutineScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.junit.jupiter.api.Test;
@@ -61,7 +64,7 @@ class PedroProgressBarListenerTest {
         assertNull(UIManager.getDefaults().get(PedroProgressBarUI.class.getName()));
 
         // applicationActivated
-        listener.applicationActivated(new TestFrame());
+        listener.applicationActivated(new TestIdeFrame());
         assertEquals(PedroProgressBarUI.class.getName(), UIManager.get("ProgressBarUI"));
         assertEquals(PedroProgressBarUI.class, UIManager.getDefaults().get(PedroProgressBarUI.class.getName()));
 
@@ -72,12 +75,12 @@ class PedroProgressBarListenerTest {
         assertNull(UIManager.getDefaults().get(PedroProgressBarUI.class.getName()));
 
         // lookAndFeelChanged
-        listener.lookAndFeelChanged(new LafManagerImpl());
+        listener.lookAndFeelChanged(new LafManagerImpl(new TestCoroutineScope()));
         assertEquals(PedroProgressBarUI.class.getName(), UIManager.get("ProgressBarUI"));
         assertEquals(PedroProgressBarUI.class, UIManager.getDefaults().get(PedroProgressBarUI.class.getName()));
     }
 
-    private static class TestFrame implements IdeFrame {
+    private static class TestIdeFrame implements IdeFrame {
 
         @Override
         public @Nullable StatusBar getStatusBar() {
@@ -110,4 +113,34 @@ class PedroProgressBarListenerTest {
         }
     }
 
+    private static class TestCoroutineScope implements CoroutineScope {
+
+        @Override
+        public @NotNull CoroutineContext getCoroutineContext() {
+            return new TestCoroutineContext();
+        }
+    }
+
+    private static class TestCoroutineContext implements CoroutineContext {
+
+        @Override
+        public @Nullable <E extends Element> E get(@NotNull CoroutineContext.Key<E> key) {
+            return null;
+        }
+
+        @Override
+        public <R> R fold(R r, @NotNull Function2<? super R, ? super Element, ? extends R> function2) {
+            return null;
+        }
+
+        @Override
+        public @NotNull CoroutineContext plus(@NotNull CoroutineContext coroutineContext) {
+            return this;
+        }
+
+        @Override
+        public @NotNull CoroutineContext minusKey(@NotNull CoroutineContext.Key<?> key) {
+            return this;
+        }
+    }
 }
