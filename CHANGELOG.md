@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Allow locally customizing the color of progress bar
+
 ## [0.0.4] - 2024-07-31
 
 ### Added

@@ -129,8 +129,10 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
                 startColor = WARNING_COLOR;
                 endColor = WARNING_END_COLOR;
             } else {
-                startColor = INDETERMINATE_START_COLOR;
-                endColor = INDETERMINATE_END_COLOR;
+                startColor = progressBar.getClientProperty("ProgressBar.indeterminateStartColor") instanceof Color color ?
+                        color : INDETERMINATE_START_COLOR;
+                endColor = progressBar.getClientProperty("ProgressBar.indeterminateEndColor") instanceof Color color ?
+                        color : INDETERMINATE_END_COLOR;
             }
 
             Shape shape;
