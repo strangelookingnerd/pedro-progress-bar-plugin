@@ -6,7 +6,7 @@
 
 ### Added
 
-- Added compatibility for `2024.3.*`
+- Lift compatibility contraint
 
 ## [0.0.5] - 2024-09-17
 
