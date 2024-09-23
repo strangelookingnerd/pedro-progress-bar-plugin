@@ -4,11 +4,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- Lift compatibility constraint
+
 ## [0.0.6] - 2024-09-20
 
 ### Added
 
-- Lift compatibility contraint
+- Lift compatibility constraint
 
 ## [0.0.5] - 2024-09-17
 
