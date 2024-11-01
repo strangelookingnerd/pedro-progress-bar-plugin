@@ -25,10 +25,9 @@
 package com.github.strangelookingnerd;
 
 import com.intellij.openapi.progress.util.ColorProgressBar;
-import com.intellij.ui.Gray;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtilities;
 
 import javax.swing.ImageIcon;
@@ -56,28 +55,6 @@ import java.awt.geom.RoundRectangle2D;
  * The actual progress bar implementation. Heavily inspired by {@link com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI}
  */
 public class PedroProgressBarUI extends BasicProgressBarUI {
-
-    private static final Color TRACK_COLOR = JBColor.namedColor("ProgressBar.trackColor",
-            new JBColor(Gray.xC4, Gray.x55));
-    private static final Color PROGRESS_COLOR = JBColor.namedColor("ProgressBar.progressColor",
-            new JBColor(Gray.x80, Gray.xA0));
-    private static final Color INDETERMINATE_START_COLOR = JBColor.namedColor("ProgressBar.indeterminateStartColor",
-            new JBColor(Gray.xC4, Gray.x69));
-    private static final Color INDETERMINATE_END_COLOR = JBColor.namedColor("ProgressBar.indeterminateEndColor",
-            new JBColor(Gray.x80, Gray.x83));
-
-    private static final Color FAILED_COLOR = JBColor.namedColor("ProgressBar.failedColor",
-            new JBColor(0xd64f4f, 0xe74848));
-    private static final Color FAILED_END_COLOR = JBColor.namedColor("ProgressBar.failedEndColor",
-            new JBColor(0xfb8f89, 0xf4a2a0));
-    private static final Color PASSED_COLOR = JBColor.namedColor("ProgressBar.passedColor",
-            new JBColor(0x34b171, 0x008f50));
-    private static final Color PASSED_END_COLOR = JBColor.namedColor("ProgressBar.passedEndColor",
-            new JBColor(0x7ee8a5, 0x5dc48f));
-    private static final Color WARNING_COLOR = JBColor.namedColor("ProgressBar.warningColor",
-            new JBColor(0xF0A732, 0xD9A343));
-    private static final Color WARNING_END_COLOR = JBColor.namedColor("ProgressBar.warningEndColor",
-            new JBColor(0xEAD2A1, 0xEAD2A1));
 
     private static final int CYCLE_TIME_DEFAULT = 800;
     private static final int REPAINT_INTERVAL_DEFAULT = 50;
@@ -114,25 +91,24 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             JBInsets.removeFrom(r, i);
             int orientation = progressBar.getOrientation();
 
-            // Use foreground color as a reference, don't use it directly. This is done for compatibility reason.
-            // Colors are hardcoded in UI delegates by design. If more colors are needed contact designers.
             Color startColor;
             Color endColor;
             Color foreground = progressBar.getForeground();
-            if (foreground == ColorProgressBar.RED) {
-                startColor = FAILED_COLOR;
-                endColor = FAILED_END_COLOR;
-            } else if (foreground == ColorProgressBar.GREEN) {
-                startColor = PASSED_COLOR;
-                endColor = PASSED_END_COLOR;
-            } else if (foreground == ColorProgressBar.YELLOW) {
-                startColor = WARNING_COLOR;
-                endColor = WARNING_END_COLOR;
+            Object statusProperty = progressBar.getClientProperty(JBUI.CurrentTheme.ProgressBar.statusKey());
+            if (JBUI.CurrentTheme.ProgressBar.failedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.RED) {
+                startColor = JBUI.CurrentTheme.ProgressBar.FAILED;
+                endColor = JBUI.CurrentTheme.ProgressBar.FAILED_END;
+            } else if (JBUI.CurrentTheme.ProgressBar.passedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.GREEN) {
+                startColor = JBUI.CurrentTheme.ProgressBar.PASSED;
+                endColor = JBUI.CurrentTheme.ProgressBar.PASSED_END;
+            } else if (JBUI.CurrentTheme.ProgressBar.warningStatusValue().equals(statusProperty) || foreground == ColorProgressBar.YELLOW) {
+                startColor = JBUI.CurrentTheme.ProgressBar.WARNING;
+                endColor = JBUI.CurrentTheme.ProgressBar.WARNING_END;
             } else {
                 startColor = progressBar.getClientProperty("ProgressBar.indeterminateStartColor") instanceof Color color ?
-                        color : INDETERMINATE_START_COLOR;
+                        color : JBUI.CurrentTheme.ProgressBar.INDETERMINATE_START;
                 endColor = progressBar.getClientProperty("ProgressBar.indeterminateEndColor") instanceof Color color ?
-                        color : INDETERMINATE_END_COLOR;
+                        color : JBUI.CurrentTheme.ProgressBar.INDETERMINATE_END;
             }
 
             Shape shape;
@@ -207,20 +183,19 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
                 fullShape = getShapedRect(xOffset, r.y, pWidth, r.height, pWidth);
                 coloredShape = getShapedRect(xOffset, r.y, pWidth, amountFull, pWidth);
             }
-            graphics2D.setColor(TRACK_COLOR);
+            graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.TRACK);
             graphics2D.fill(fullShape);
 
-            // Use foreground color as a reference, don't use it directly. This is done for compatibility reason.
-            // Colors are hardcoded in UI delegates by design. If more colors are needed contact designers.
             Color foreground = progressBar.getForeground();
-            if (foreground == ColorProgressBar.RED) {
-                graphics2D.setColor(FAILED_COLOR);
-            } else if (foreground == ColorProgressBar.GREEN) {
-                graphics2D.setColor(PASSED_COLOR);
-            } else if (foreground == ColorProgressBar.YELLOW) {
-                graphics2D.setColor(WARNING_COLOR);
+            Object statusProperty = progressBar.getClientProperty(JBUI.CurrentTheme.ProgressBar.statusKey());
+            if (JBUI.CurrentTheme.ProgressBar.failedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.RED) {
+                graphics.setColor(JBUI.CurrentTheme.ProgressBar.FAILED);
+            } else if (JBUI.CurrentTheme.ProgressBar.passedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.GREEN) {
+                graphics.setColor(JBUI.CurrentTheme.ProgressBar.PASSED);
+            } else if (JBUI.CurrentTheme.ProgressBar.warningStatusValue().equals(statusProperty) || foreground == ColorProgressBar.YELLOW) {
+                graphics.setColor(JBUI.CurrentTheme.ProgressBar.WARNING);
             } else {
-                graphics2D.setColor(PROGRESS_COLOR);
+                graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.PROGRESS);
             }
             graphics2D.fill(coloredShape);
 
