@@ -43,7 +43,7 @@ class PedroIconsTest {
 
     @ParameterizedTest
     @ValueSource(floats = {0.75F, 1F, 1.1F, 1.25F, 1.5F, 1.75F, 2F, 3F})
-    void testScaling(float scaleFactor) {
+    void scaling(float scaleFactor) {
         JBUIScale.setUserScaleFactorForTest(scaleFactor);
 
         ImageIcon icon = PedroIcons.getScaledIcon();
