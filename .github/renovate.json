@@ -18,18 +18,18 @@
       ],
       "customManagers": [
         {
+          "description": "Update Gradle version in properties.",
           "customType": "regex",
+          "matchStringsStrategy": "any",
           "fileMatch": [
-            "gradle.properties"
+            "^gradle\\.properties$"
           ],
+          "datasourceTemplate": "gradle-version",
+          "depNameTemplate": "gradle",
           "matchStrings": [
             "gradleVersion = (?<currentValue>.*)"
           ],
-          "matchStringsStrategy": "any",
-          "depNameTemplate": "gradle",
-          "datasourceTemplate": "gradle-version",
-          "versioningTemplate": "gradle",
-          "registryUrlTemplate": "https://services.gradle.org/versions/all"
+          "versioningTemplate": "gradle"
         }
       ]
     }
