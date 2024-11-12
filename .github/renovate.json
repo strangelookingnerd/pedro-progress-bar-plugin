@@ -25,7 +25,7 @@
           "matchStrings": [
             "^gradleVersion\\s?=\\s?(?<currentValue>.*)$"
           ],
-          "depNameTemplate": "Gradle",
+          "depNameTemplate": "gradle",
           "datasourceTemplate": "gradle-version"
         }
       ]
