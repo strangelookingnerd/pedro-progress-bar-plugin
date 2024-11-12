@@ -19,11 +19,17 @@
       "customManagers": [
         {
           "customType": "regex",
-          "matchStrings": [
-            "^gradleVersion\\s?=\\s?(?<currentValue>.*)$"
+          "fileMatch": [
+            "gradle.properties"
           ],
+          "matchStrings": [
+            "gradleVersion = (?<currentValue>.*)"
+          ],
+          "matchStringsStrategy": "any",
           "depNameTemplate": "gradle",
-          "datasourceTemplate": "gradle-version"
+          "datasourceTemplate": "gradle-version",
+          "versioningTemplate": "gradle",
+          "registryUrlTemplate": "https://services.gradle.org/versions/all"
         }
       ]
     }
