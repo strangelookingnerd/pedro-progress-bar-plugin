@@ -10,5 +10,19 @@
   ],
   "labels": [
     "dependencies"
+  ],
+  "packageRules": [
+    {
+      "matchFiles": ["gradle.properties"],
+      "regexManagers": [
+        {
+          "fileMatch": ["^gradle\\.properties$"],
+          "matchStrings": ["^gradleVersion\\s?=\\s?(?<currentValue>.*)$"],
+          "depNameTemplate": "Gradle",
+          "datasourceTemplate": "gradle-version"
+        }
+      ]
+    }
   ]
 }
+
