@@ -13,11 +13,18 @@
   ],
   "packageRules": [
     {
-      "matchFiles": ["gradle.properties"],
-      "regexManagers": [
+      "matchFileNames": [
+        "gradle.properties"
+      ],
+      "customManagers": [
         {
-          "fileMatch": ["^gradle\\.properties$"],
-          "matchStrings": ["^gradleVersion\\s?=\\s?(?<currentValue>.*)$"],
+          "customType": "regex",
+          "fileMatch": [
+            "^gradle\\.properties$"
+          ],
+          "matchStrings": [
+            "^gradleVersion\\s?=\\s?(?<currentValue>.*)$"
+          ],
           "depNameTemplate": "Gradle",
           "datasourceTemplate": "gradle-version"
         }
@@ -25,4 +32,3 @@
     }
   ]
 }
-
