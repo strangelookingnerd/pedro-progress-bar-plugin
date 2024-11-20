@@ -11,27 +11,21 @@
   "labels": [
     "dependencies"
   ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^gradle.properties$"],
+      "matchStrings": [
+        "gradleVersion = (?<currentValue>.+)"
+      ],
+      "depNameTemplate": "Gradle",
+      "versioning": "semver",
+      "datasourceTemplate": "gradle-version"
+    }
+  ],
   "packageRules": [
     {
-      "matchFileNames": [
-        "gradle.properties"
-      ],
-      "customManagers": [
-        {
-          "description": "Update Gradle version in properties.",
-          "customType": "regex",
-          "matchStringsStrategy": "any",
-          "fileMatch": [
-            "^gradle\\.properties$"
-          ],
-          "datasourceTemplate": "gradle-version",
-          "depNameTemplate": "gradle",
-          "matchStrings": [
-            "gradleVersion = (?<currentValue>.*)"
-          ],
-          "versioningTemplate": "gradle"
-        }
-      ]
+      "matchPackageNames": ["Gradle"],
+      "groupName": "Gradle Updates"
     }
   ]
 }
