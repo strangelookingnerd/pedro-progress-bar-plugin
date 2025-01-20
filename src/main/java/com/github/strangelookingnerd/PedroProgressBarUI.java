@@ -24,7 +24,6 @@
 
 package com.github.strangelookingnerd;
 
-import com.intellij.openapi.progress.util.ColorProgressBar;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -95,13 +94,13 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             Color endColor;
             Color foreground = progressBar.getForeground();
             Object statusProperty = progressBar.getClientProperty(JBUI.CurrentTheme.ProgressBar.statusKey());
-            if (JBUI.CurrentTheme.ProgressBar.failedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.RED) {
+            if (JBUI.CurrentTheme.ProgressBar.failedStatusValue().equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.FAILED) {
                 startColor = JBUI.CurrentTheme.ProgressBar.FAILED;
                 endColor = JBUI.CurrentTheme.ProgressBar.FAILED_END;
-            } else if (JBUI.CurrentTheme.ProgressBar.passedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.GREEN) {
+            } else if (JBUI.CurrentTheme.ProgressBar.passedStatusValue().equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.PASSED) {
                 startColor = JBUI.CurrentTheme.ProgressBar.PASSED;
                 endColor = JBUI.CurrentTheme.ProgressBar.PASSED_END;
-            } else if (JBUI.CurrentTheme.ProgressBar.warningStatusValue().equals(statusProperty) || foreground == ColorProgressBar.YELLOW) {
+            } else if (JBUI.CurrentTheme.ProgressBar.warningStatusValue().equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.WARNING) {
                 startColor = JBUI.CurrentTheme.ProgressBar.WARNING;
                 endColor = JBUI.CurrentTheme.ProgressBar.WARNING_END;
             } else {
@@ -188,11 +187,11 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
 
             Color foreground = progressBar.getForeground();
             Object statusProperty = progressBar.getClientProperty(JBUI.CurrentTheme.ProgressBar.statusKey());
-            if (JBUI.CurrentTheme.ProgressBar.failedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.RED) {
+            if (JBUI.CurrentTheme.ProgressBar.failedStatusValue().equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.FAILED) {
                 graphics.setColor(JBUI.CurrentTheme.ProgressBar.FAILED);
-            } else if (JBUI.CurrentTheme.ProgressBar.passedStatusValue().equals(statusProperty) || foreground == ColorProgressBar.GREEN) {
+            } else if (JBUI.CurrentTheme.ProgressBar.passedStatusValue().equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.PASSED) {
                 graphics.setColor(JBUI.CurrentTheme.ProgressBar.PASSED);
-            } else if (JBUI.CurrentTheme.ProgressBar.warningStatusValue().equals(statusProperty) || foreground == ColorProgressBar.YELLOW) {
+            } else if (JBUI.CurrentTheme.ProgressBar.warningStatusValue().equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.WARNING) {
                 graphics.setColor(JBUI.CurrentTheme.ProgressBar.WARNING);
             } else {
                 graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.PROGRESS);
