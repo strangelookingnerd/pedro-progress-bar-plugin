@@ -34,13 +34,13 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 class PedroProgressBarUITest {
 
     @Test
-    void testCreateUI() {
+    void createUI() {
         ComponentUI ui = PedroProgressBarUI.createUI(null);
         assertInstanceOf(PedroProgressBarUI.class, ui);
     }
 
     @Test
-    void testGetBoxLength() {
+    void getBoxLength() {
         PedroProgressBarUI progressBar = new PedroProgressBarUI();
         assertEquals(0, progressBar.getBoxLength(0, 100));
     }

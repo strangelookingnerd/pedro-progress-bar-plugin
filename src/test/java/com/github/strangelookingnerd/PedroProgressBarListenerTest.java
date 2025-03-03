@@ -47,7 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class PedroProgressBarListenerTest {
 
     @Test
-    void testUpdateProgressBar() {
+    void updateProgressBar() {
         // defaults
         assertEquals(MetalProgressBarUI.class.getName(), UIManager.get("ProgressBarUI"));
         assertNull(UIManager.getDefaults().get(PedroProgressBarUI.class.getName()));

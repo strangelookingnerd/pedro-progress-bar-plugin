@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Use built-in constants for colors
+
 ## [0.0.7] - 2024-09-23
 
 ### Added
