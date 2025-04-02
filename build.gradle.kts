@@ -31,9 +31,9 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-    testImplementation(libs.junit)
     testImplementation(libs.junit5)
     testImplementation(libs.opentest4j)
+    testRuntimeOnly(libs.junit)
     testRuntimeOnly(libs.junit5Launcher)
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
@@ -46,12 +46,15 @@ dependencies {
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
 
-        testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.JUnit5)
     }
 }
 
 // Configure IntelliJ Platform Gradle Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-extension.html
 intellijPlatform {
+
+    buildSearchableOptions = false
+
     pluginConfiguration {
         // name = providers.gradleProperty("pluginName") // do not patch name
         version = providers.gradleProperty("pluginVersion")
@@ -129,10 +132,6 @@ kover {
 tasks {
     wrapper {
         gradleVersion = providers.gradleProperty("gradleVersion").get()
-    }
-
-    buildSearchableOptions {
-        enabled = false
     }
 
     test {
