@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Upgrade template to 2.1.0
+
 ## [0.0.7] - 2024-09-23
 
 ### Added
