@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.0.8] - 2025-04-02
+
 ### Added
 
 - Upgrade template to 2.1.0
@@ -54,7 +56,8 @@
 - Implemented first version of Pedro Progress Bar
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.7...HEAD
+[Unreleased]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.8...HEAD
+[0.0.8]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.6...v0.0.7
 [0.0.6]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/strangelookingnerd/pedro-progress-bar-plugin/compare/v0.0.4...v0.0.5
