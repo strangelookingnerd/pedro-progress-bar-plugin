@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Require 2025.1
+- Use built-in constants for colors
+
 ## [0.0.8] - 2025-04-02
 
 ### Added
