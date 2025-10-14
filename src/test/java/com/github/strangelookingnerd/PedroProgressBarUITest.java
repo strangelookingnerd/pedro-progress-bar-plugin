@@ -44,5 +44,4 @@ class PedroProgressBarUITest {
         PedroProgressBarUI progressBar = new PedroProgressBarUI();
         assertEquals(0, progressBar.getBoxLength(0, 100));
     }
-
 }
