@@ -43,6 +43,8 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
+import java.awt.Paint;
+import java.awt.PaintContext;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
@@ -50,6 +52,7 @@ import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.image.ColorModel;
 
 /**
  * The actual progress bar implementation. Heavily inspired by {@link com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI}
@@ -95,6 +98,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             Color endColor;
             Color foreground = progressBar.getForeground();
             Object statusProperty = progressBar.getClientProperty(ProgressBarUtil.STATUS_KEY);
+
             if (ProgressBarUtil.FAILED_VALUE.equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.FAILED) {
                 startColor = JBUI.CurrentTheme.ProgressBar.FAILED;
                 endColor = JBUI.CurrentTheme.ProgressBar.FAILED_END;
@@ -169,8 +173,9 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
 
             Shape fullShape;
             Shape coloredShape;
-            int orientation = progressBar.getOrientation();
-            if (orientation == SwingConstants.HORIZONTAL) {
+            boolean horizontalOrientation = progressBar.getOrientation() == SwingConstants.HORIZONTAL;
+
+            if (horizontalOrientation) {
                 int pHeight = getStripeWidth();
                 int yOffset = r.y + (r.height - pHeight) / 2;
 
@@ -188,19 +193,23 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
 
             Color foreground = progressBar.getForeground();
             Object statusProperty = progressBar.getClientProperty(ProgressBarUtil.STATUS_KEY);
-            if (ProgressBarUtil.FAILED_VALUE.equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.FAILED) {
-                graphics.setColor(JBUI.CurrentTheme.ProgressBar.FAILED);
+
+            if (progressBar.getClientProperty(ProgressBarUtil.PROGRESS_PAINT_KEY) instanceof Paint progressPaint) {
+                PaintTransformer paint = new PaintTransformer(progressPaint, horizontalOrientation, horizontalOrientation ? r.x : r.y, amountFull);
+                graphics2D.setPaint(paint);
+            } else if (ProgressBarUtil.FAILED_VALUE.equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.FAILED) {
+                graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.FAILED);
             } else if (ProgressBarUtil.PASSED_VALUE.equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.PASSED) {
-                graphics.setColor(JBUI.CurrentTheme.ProgressBar.PASSED);
+                graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.PASSED);
             } else if (ProgressBarUtil.WARNING_VALUE.equals(statusProperty) || foreground == JBUI.CurrentTheme.ProgressBar.WARNING) {
-                graphics.setColor(JBUI.CurrentTheme.ProgressBar.WARNING);
+                graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.WARNING);
             } else {
                 graphics2D.setColor(JBUI.CurrentTheme.ProgressBar.PROGRESS);
             }
             graphics2D.fill(coloredShape);
 
             ImageIcon icon = PedroIcons.getScaledIcon();
-            if (orientation == SwingConstants.HORIZONTAL) {
+            if (horizontalOrientation) {
                 icon.paintIcon(progressBar, graphics2D, amountFull, r.y);
             } else {
                 icon.paintIcon(progressBar, graphics2D, r.x, amountFull);
@@ -279,5 +288,36 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             UIUtilities.drawString(progressBar, graphics2D, progressString, renderLocation.x, renderLocation.y);
         }
         graphics2D.setClip(oldClip);
+    }
+
+    private record PaintTransformer(Paint originalPaint, boolean isHorizontal, int start, int size) implements Paint {
+
+        @Override
+        public PaintContext createContext(ColorModel cm, Rectangle deviceBounds, Rectangle2D userBounds, AffineTransform xform, RenderingHints hints) {
+            AffineTransform transform = xform == null ? new AffineTransform() : (AffineTransform) xform.clone();
+
+            if (start != 0) {
+                if (isHorizontal) {
+                    transform.translate(start, 0);
+                } else {
+                    transform.translate(0, start);
+                }
+            }
+
+            if (size > 0) {
+                transform.scale(size, size);
+            }
+
+            if (!isHorizontal) {
+                transform.rotate(Math.toRadians(90), 0, 0);
+            }
+
+            return originalPaint.createContext(cm, deviceBounds, userBounds, transform, hints);
+        }
+
+        @Override
+        public int getTransparency() {
+            return originalPaint.getTransparency();
+        }
     }
 }
