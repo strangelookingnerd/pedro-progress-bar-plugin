@@ -53,4 +53,3 @@ public class PedroProgressBarListener implements LafManagerListener, Application
         UIManager.getDefaults().put(PedroProgressBarUI.class.getName(), PedroProgressBarUI.class);
     }
 }
-
