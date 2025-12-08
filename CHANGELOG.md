@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- Require 2025.3
+- Pull changes from `DarculaProgressBarUI`
+- Pull changes from plugin template
+
 ## [0.0.9] - 2025-04-17
 
 ### Added

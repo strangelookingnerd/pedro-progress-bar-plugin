@@ -41,15 +41,15 @@ class PedroIconsTest {
 
     private static final Pattern DESCRIPTION_PATTERN = Pattern.compile("^Pedro (\\d\\d)x(\\d\\d)$");
 
-    @ParameterizedTest
-    @ValueSource(floats = {0.75F, 1F, 1.1F, 1.25F, 1.5F, 1.75F, 2F, 3F})
-    void scaling(float scaleFactor) {
-        JBUIScale.setUserScaleFactorForTest(scaleFactor);
+    @ParameterizedTest(name = "{0}%")
+    @ValueSource(ints = {75, 100, 110, 125, 150, 175, 200, 300})
+    void scaling(int scale) {
+        JBUIScale.setUserScaleFactorForTest(scale / 100F);
 
         ImageIcon icon = PedroIcons.getScaledIcon();
         assertNotNull(icon);
 
-        if (scaleFactor < 1F || scaleFactor > 2F) {
+        if (scale < 100 || scale > 200) {
             assertNull(icon.getImage());
             assertNull(icon.getDescription());
         } else {
