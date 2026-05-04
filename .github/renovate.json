@@ -10,26 +10,5 @@
   ],
   "labels": [
     "dependencies"
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^gradle.properties$/"
-      ],
-      "matchStrings": [
-        "gradleVersion = (?<currentValue>.+)"
-      ],
-      "depNameTemplate": "gradle",
-      "datasourceTemplate": "gradle-version"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "Gradle"
-      ],
-      "groupName": "Gradle Updates"
-    }
   ]
 }
