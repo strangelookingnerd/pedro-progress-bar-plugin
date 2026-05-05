@@ -4,6 +4,11 @@
     <name>Pedro Progress Bar</name>
     <vendor url="https://strangelookingnerd.github.io">strangelookingnerd</vendor>
     <category>User Interface</category>
+    <description><![CDATA[
+        <p>This plugin provides a custom progress bar featuring an animated pixel art version of the <a href="https://youtu.be/F2YpXC1itEE" target="_blank">Pedro Pedro Pedro - Racoon Meme</a>.</p>
+        <p>The artwork originates from a <a href="https://www.reddit.com/r/PixelArt/comments/1ci6rxh/pedro_racoon" target="_blank">reddit post</a> by <a href="https://www.reddit.com/user/Hobbes2594" target="_blank">/u/Hobbes2594</a>.</p>
+        <p>The progress bar itself is heavily inspired from the `DarculaProgressBarUI` implementation by IntelliJ.</p>
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
