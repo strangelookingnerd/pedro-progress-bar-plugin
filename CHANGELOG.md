@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## 0.0.11 - 2026-11-05
+
 ### Added
 
 - Maintenance release
