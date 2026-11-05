@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Maintenance release
+
 ## [0.0.10] - 2025-12-08
 
 ### Added
