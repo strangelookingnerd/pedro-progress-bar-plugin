@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## 0.0.12 - 2026-11-08
+
 - Require 2026.3
 - Pull changes from `DarculaProgressBarUI`
 
