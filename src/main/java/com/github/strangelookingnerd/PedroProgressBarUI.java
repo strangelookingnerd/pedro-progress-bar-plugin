@@ -25,6 +25,7 @@
 package com.github.strangelookingnerd;
 
 import com.intellij.openapi.progress.util.ProgressBarUtil;
+import com.intellij.ui.paint.PaintUtil;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -59,8 +60,8 @@ import java.awt.image.ColorModel;
  */
 public class PedroProgressBarUI extends BasicProgressBarUI {
 
-    private static final int CYCLE_TIME_DEFAULT = 800;
-    private static final int REPAINT_INTERVAL_DEFAULT = 50;
+    private static final int DEFAULT_CYCLE_TIME = 800;
+    private static final int DEFAULT_REPAINT_INTERVAL = 50;
 
     private static final int DEFAULT_STRIPE_WIDTH = 4;
     private static final int DEFAULT_SCALING_BASE_LINE = 16;
@@ -73,14 +74,13 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
     @Override
     protected void installDefaults() {
         super.installDefaults();
-        UIManager.put("ProgressBar.repaintInterval", REPAINT_INTERVAL_DEFAULT);
-        UIManager.put("ProgressBar.cycleTime", CYCLE_TIME_DEFAULT);
+        UIManager.put("ProgressBar.repaintInterval", DEFAULT_REPAINT_INTERVAL);
+        UIManager.put("ProgressBar.cycleTime", DEFAULT_CYCLE_TIME);
     }
 
     @Override
     protected void paintIndeterminate(Graphics graphics, JComponent component) {
-        Graphics2D graphics2D = (Graphics2D) graphics.create();
-        try {
+        PaintUtil.useCopy(graphics, graphics2D -> {
             graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             graphics2D.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
@@ -117,18 +117,19 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
 
             Shape shape;
             int step = JBUIScale.scale(6);
-            if (orientation == SwingConstants.HORIZONTAL) {
-                int pHeight = getStripeWidth();
-                int yOffset = r.y + (r.height - pHeight) / 2;
+            int pHeight = progressBar.getPreferredSize().height;
+            int pWidth = progressBar.getPreferredSize().width;
+            int yOffset = r.y + (r.height - pHeight) / 2;
+            int xOffset = r.x + (r.width - pWidth) / 2;
 
+            if (orientation == SwingConstants.HORIZONTAL) {
                 shape = getShapedRect(r.x, yOffset, r.width, pHeight, pHeight);
+                yOffset = r.y + pHeight / 2;
                 graphics2D.setPaint(new GradientPaint(r.x + getAnimationIndex() * step * 2F, yOffset, startColor,
                         r.x + getFrameCount() * step + getAnimationIndex() * step * 2F, yOffset, endColor, true));
             } else {
-                int pWidth = getStripeWidth();
-                int xOffset = r.x + (r.width - pWidth) / 2;
-
                 shape = getShapedRect(xOffset, r.y, pWidth, r.height, pWidth);
+                xOffset = r.x + pWidth / 2;
                 graphics2D.setPaint(new GradientPaint(xOffset, r.y + getAnimationIndex() * step * 2F, startColor,
                         xOffset, r.y + getFrameCount() * step + getAnimationIndex() * step * 2F, endColor, true));
             }
@@ -149,15 +150,12 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
                     paintString((Graphics2D) graphics, i.left, i.top, r.width, r.height, boxRect.y, boxRect.height);
                 }
             }
-        } finally {
-            graphics2D.dispose();
-        }
+        });
     }
 
     @Override
     protected void paintDeterminate(Graphics graphics, JComponent component) {
-        Graphics2D graphics2D = (Graphics2D) graphics.create();
-        try {
+        PaintUtil.useCopy(graphics, graphics2D -> {
             graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             graphics2D.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
@@ -218,9 +216,7 @@ public class PedroProgressBarUI extends BasicProgressBarUI {
             if (progressBar.isStringPainted()) {
                 paintString(graphics, i.left, i.top, r.width, r.height, amountFull, i);
             }
-        } finally {
-            graphics2D.dispose();
-        }
+        });
     }
 
     @Override

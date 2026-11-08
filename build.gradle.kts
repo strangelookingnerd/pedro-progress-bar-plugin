@@ -15,7 +15,7 @@ dependencies {
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
-        intellijIdea("2025.3")
+        intellijIdea("2026.3")
         testFramework(TestFrameworkType.JUnit5)
     }
 }
